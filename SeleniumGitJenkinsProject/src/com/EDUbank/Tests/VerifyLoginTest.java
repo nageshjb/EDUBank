@@ -1,4 +1,4 @@
-package com.InEssenceBank.Tests;
+package com.EDUbank.Tests;
 
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeMethod;
@@ -12,27 +12,33 @@ public class VerifyLoginTest {
 	WebDriver driver;
   @Test
   public void f() { 
-	  driver.findElement(By.id("ctl00_body_txtUserID")).sendKeys("donhere");
-	  driver.findElement(By.id("ctl00_body_txtPassword")).sendKeys("don@123");
-	  driver.findElement(By.name("ctl00$body$btnLogin")).click();
-	  if (driver.findElement(By.id("ctl00_ctl00_divWelcome")).isDisplayed()) 
+	  driver.findElement(By.id("tellerId")).sendKeys("T7302");
+	  driver.findElement(By.id("password")).sendKeys("T7302*abc");
+	  driver.findElement(By.xpath("//button[@type='submit']")).click();
+	  if (driver.findElement(By.linkText("Logout")).isDisplayed()) 
 		  System.out.println("Login success");
 	  else
 		  System.out.println("Login failed");
   }
   @BeforeMethod
   public void beforeMethod() {
-	  url = "http://10.67.89.86:84/Common/Login.aspx";
+	  url = "http://vjeemys-19:3333/EDUBank/tellerLogin";
 	  System.setProperty("webdriver.chrome.driver","C:\\Users\\nagesh_boregowda\\Downloads\\chromedriver_win32\\chromedriver.exe");
 	   driver = new ChromeDriver();
 	   driver.navigate().to(url);
   }
   @AfterMethod
   public void afterMethod() {
-	 // driver.close();
+	 driver.close();
   }
-
 }
+
+
+
+
+
+
+
 
 
 
